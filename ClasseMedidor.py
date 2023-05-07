@@ -3,7 +3,7 @@ class Medidor:
         """
         Inicialização da classe Medidor
 
-        Args: teste
+        Args:
             em (int): número do medidor
             dt_leitura (date): data da última leitura do medidor
             leitura_kwh (int): valor da última leitura do medidor em kWh
@@ -27,7 +27,7 @@ class Medidor:
     def __str__(self):
         # Método especial que retorna uma string com informações do medidor
         # return f"Medidor {self._em}: {self._leitura_kwh} kWh ({self._dt_leitura}), Cliente: {self._cliente_associado}, CS: {self._cs_associada}, Rede: {self._net_associada}, Status Relé: {'ON' if self._status_rele else 'OFF'}, {'Autocad' if self._autocad else ''}"
-        print("Instalacao: ", self._instalacao)
+        print("Instalação: ", self._instalacao)
         print("Medidor: ", self._em)
         print("Net: ", self._net)
         print("CS: ", self._cs)
