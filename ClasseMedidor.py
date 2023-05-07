@@ -3,7 +3,7 @@ class Medidor:
         """
         Inicialização da classe Medidor
 
-        Args:
+        Args: teste
             em (int): número do medidor
             dt_leitura (date): data da última leitura do medidor
             leitura_kwh (int): valor da última leitura do medidor em kWh
