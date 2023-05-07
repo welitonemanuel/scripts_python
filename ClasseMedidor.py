@@ -1,5 +1,5 @@
 class Medidor:
-    def __init__(self, em, instalacao, cs, net, dt_ult_leitura, dt_leitura, leitura_kwh, status_rele,autocad):
+    def __init__(self, instalacao, em, cs, net, dt_ult_leitura, dt_leitura, leitura_kwh, status_rele,autocad):
         """
         Inicialização da classe Medidor
 
@@ -14,8 +14,8 @@ class Medidor:
             cliente_associado (int(10)): nome do cliente associado ao medidor
             dt_ult_leitura (date): data da penúltima leitura do medidor (opcional)
         """
-        self._em = em
         self._instalacao = instalacao
+        self._em = em
         self._cs = cs
         self._net = net
         self._dt_ult_leitura = dt_ult_leitura
@@ -26,16 +26,15 @@ class Medidor:
 
     def __str__(self):
         # Método especial que retorna uma string com informações do medidor
-        # return f"Medidor {self._em}: {self._leitura_kwh} kWh ({self._dt_leitura}), Cliente: {self._cliente_associado}, CS: {self._cs_associada}, Rede: {self._net_associada}, Status Relé: {'ON' if self._status_rele else 'OFF'}, {'Autocad' if self._autocad else ''}"
-        print("Instalação: ", self._instalacao)
-        print("Medidor: ", self._em)
-        print("Net: ", self._net)
-        print("CS: ", self._cs)
-        print("Data da última leitura: ", self._dt_ult_leitura)
-        print("Data da leitura: ", self._dt_leitura)
-        print("Leitura em kWh: ", self._leitura_kwh)
-        print("Status do Relê: ", self._status_rele)
-        print("Autocadastro: ", self._autocad)
+        return "Instalação: " + str(self._instalacao) + "\n" + \
+        "Medidor: " + str(self._em) + "\n" + \
+        "Net: " + str(self._net) + "\n" + \
+        "CS: " + str(self._cs) + "\n" + \
+        "Data da última leitura: " + str(self._dt_ult_leitura) + "\n" + \
+        "Data da leitura: " + str(self._dt_leitura) + "\n" + \
+        "Leitura em kWh: " + str(self._leitura_kwh) + "\n" + \
+        "Status do Relê: " + str(self._status_rele) + "\n" + \
+        "Autocadastro: " + str(self._autocad)
 
     def status_em(self, dias:int) -> str:
         """
