@@ -1,5 +1,5 @@
 class Medidor:
-    def __init__(self, em, dt_leitura, leitura_kwh, autocad, status_rele, cs_associada, net_associada, cliente_associado, dt_ult_leitura=None):
+    def __init__(self, em, instalacao, cs, net, dt_ult_leitura, dt_leitura, leitura_kwh, status_rele,autocad):
         """
         Inicialização da classe Medidor
 
@@ -14,15 +14,15 @@ class Medidor:
             cliente_associado (int(10)): nome do cliente associado ao medidor
             dt_ult_leitura (date): data da penúltima leitura do medidor (opcional)
         """
-        self.instalacao = instalacao
-        self.em = em
-        self.net = net
-        self.cs = cs
-        self.dt_ult_leitura = dt_ult_leitura
-        self.dt_leitura = dt_leitura
-        self.status_rele = status_rele
-        self.leitura_kwh = leitura_kwh
-        self.autocad = autocad
+        self._em = em
+        self._instalacao = instalacao
+        self._cs = cs
+        self._net = net
+        self._dt_ult_leitura = dt_ult_leitura
+        self._dt_leitura = dt_leitura
+        self._leitura_kwh = leitura_kwh
+        self._status_rele = status_rele
+        self._autocad = autocad
 
     def __str__(self):
         # Método especial que retorna uma string com informações do medidor
@@ -34,10 +34,10 @@ class Medidor:
         print("Data da última leitura: ", self._dt_ult_leitura)
         print("Data da leitura: ", self._dt_leitura)
         print("Leitura em kWh: ", self._leitura_kwh)
-        print("Status do Relê: ", self._status_rede)
+        print("Status do Relê: ", self._status_rele)
         print("Autocadastro: ", self._autocad)
 
-    def status_em_d2(self, dias:int) -> str:
+    def status_em(self, dias:int) -> str:
         """
         Método que retorna o status do relé do medidor em, baseado na diferença entre as últimas duas leituras.
 
@@ -49,16 +49,21 @@ class Medidor:
         """
         if not dias:
             dias = 2
-        try:
-            dias = int(dias)
-            if dias <= 0:
-                raise ValueError("O número de dias deve ser positivo.")
-        except ValueError:
-            print("O número de dias informado não é um inteiro positivo.")
-            return None
+        # try:
+        #     dias = int(dias)
+        #     if dias <= 0:
+        #         raise ValueError("O número de dias deve ser positivo.")
+        # except ValueError:
+        #     print("O número de dias informado não é um inteiro positivo.")
+        #     return None
         if not self._dt_ult_leitura: return "OFF"
         diff = (self.dt_leitura - self.dt_ult_leitura).days
         if diff < 2:
             return "ON"
         else:
             return "OFF"
+
+        # testes da classe
+if __name__ == "__main__":
+     m1 = Medidor(123,456,999,9999,"01/01/2023","05/01/2023",32,"Ligado","SIM")
+     print(m1)
